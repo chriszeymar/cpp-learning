@@ -77,18 +77,18 @@ signed int compare_strings(string str1, string str2) {
     return 1;
 }
 
-string transform_fname(string fname) {
+string transform_fname(string name) {
 
-    transform(fname.begin(), fname.end(), fname.begin(), ::tolower);
+    transform(name.begin(), name.end(), name.begin(), ::tolower);
 
     size_t lastdot;
 
-    if ((lastdot = fname.find_last_of('.')) != string::npos) {
-        if (fname.size() - lastdot <= 5)    // '.c' == 2  // '.avi' == 4 // '.flac' == 5
-            return fname.substr(0, lastdot);
+    if ((lastdot = name.find_last_of('.')) != string::npos) {
+        if (name.size() - lastdot <= 5)    // '.c' == 2  // '.avi' == 4 // '.flac' == 5
+            return name.substr(0, lastdot);
     }
 
-    return fname;
+    return name;
 }
 
 void traverse(const char *fn, vector <array <string, 2>> *collection, string(*callback)(string)) {
